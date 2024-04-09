@@ -1,15 +1,22 @@
-import yayJpg from '../../assets/yay.jpg';
+import { Outlet } from "umi";
+import Header from "@/components/Header";
+import NavBar from "@/components/NavBar";
+import styles from "./index.less";
 
-export default function Index() {
-  return (
-    <div>
-      <h2>Yay! Welcome to umi!</h2>
-      <p>
-        <img src={yayJpg} width="388" />
-      </p>
-      <p>
-        To get started, edit <code>pages/index.tsx</code> and save to reload.
-      </p>
-    </div>
-  );
-}
+const Index = () => {
+    return (
+        <div className={styles.index}>
+            <Header />
+            <div className={styles.container}>
+                <div className={styles.navs}>
+                    <NavBar />
+                </div>
+                <div className={styles.outlet}>
+                    <Outlet />
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default Index;
