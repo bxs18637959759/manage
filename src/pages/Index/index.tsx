@@ -1,9 +1,16 @@
-import { Outlet } from "umi";
+import React, { useEffect } from "react";
+import { Outlet, history } from "umi";
 import Header from "@/components/Header";
 import NavBar from "@/components/NavBar";
 import styles from "./index.less";
 
-const Index = () => {
+const Index: React.FC = () => {
+    useEffect(() => {
+        if (!sessionStorage.getItem("token")) {
+            history.push("/login");
+        }
+    }, []);
+
     return (
         <div className={styles.index}>
             <Header />

@@ -8,7 +8,11 @@ const Header: React.FC = () => {
     const items: MenuProps["items"] = [
         {
             key: "1",
-            label: <Link to="/login">退出登录</Link>,
+            label: (
+                <Link onClick={() => sessionStorage.removeItem("token")} to="/login">
+                    退出登录
+                </Link>
+            ),
         },
     ];
 

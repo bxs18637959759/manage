@@ -2,19 +2,20 @@ import { defineConfig } from "umi";
 
 export default defineConfig({
     routes: [
-        { path: "/", redirect: "/index/dashboard" },
+        { path: "/", redirect: "/login" },
         {
-            path: "/index",
+            path: "/",
             component: "./Index",
             routes: [
                 {
-                    path: "/index/dashboard",
+                    path: "/dashboard",
                     component: "./Index/Dashboard",
                 },
-                { path: "/index/form", component: "./Index/Form" },
+                { path: "/form", component: "./Index/Form" },
             ],
         },
         { path: "/login", component: "./Login" },
+        { path: "/reg", component: "./Login" },
         { path: "*", component: "./404" },
     ],
     npmClient: "npm",

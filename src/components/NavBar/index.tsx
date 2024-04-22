@@ -1,23 +1,28 @@
-import React, { useState } from "react";
-import { history } from "umi";
+import React, { useState, useEffect } from "react";
+import { history, useLocation } from "umi";
 import { DashboardOutlined, FormOutlined } from "@ant-design/icons";
-import type { MenuProps } from "antd";
 import { Menu } from "antd";
+import type { MenuProps } from "antd";
 import styles from "./index.less";
 
 const NavBar: React.FC = () => {
+    const localtion = useLocation();
     const [collapsed, setCollapsed] = useState(false);
-    const [current, setCurrent] = useState("/index/dashboard");
+    const [current, setCurrent] = useState(localtion.pathname);
+
+    useEffect(() => {
+        setCurrent(localtion.pathname);
+    }, [localtion]);
 
     const items: MenuProps["items"] = [
         {
             label: "dashboard",
-            key: "/index/dashboard",
+            key: "/dashboard",
             icon: <DashboardOutlined />,
         },
         {
             label: "表单",
-            key: "/index/form",
+            key: "/form",
             icon: <FormOutlined />,
         },
     ];
